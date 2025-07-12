@@ -1,6 +1,6 @@
 import java.util.Scanner;
 public class increasinganumberby1 {
-    public static int sigma(int number){
+    public static int add(int number){
         number += 1;
         return number;
     }
@@ -9,7 +9,7 @@ public class increasinganumberby1 {
         System.out.println("What number would you like to increase by 1.");
         int choice = answer.nextInt();
         System.out.println("You chose the number " + choice + ".");
-        choice = sigma(choice);
+        choice = add(choice);
         System.out.println("Your number is now " + choice + ".");
     }
 }

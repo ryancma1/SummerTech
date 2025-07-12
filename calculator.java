@@ -3,8 +3,8 @@ public class calculator {
     public static void main (String args[]){
         Scanner Answer = new Scanner(System.in);
         System.out.println("Welcome to the Calculator!");
-        String using = "Yes";
-        while (using.equals("Yes")){    
+        String using = "YES";
+        while (using.equals("YES")){    
             System.out.println("Please choose a function.");
             System.out.println("1) Add");
             System.out.println("2) Subtract");
@@ -37,6 +37,7 @@ public class calculator {
             }
             System.out.println("Would you like to continue to use the Calculator?");
             using = Answer.next();
+            using = using.toUpperCase();
         }
     }   
 }

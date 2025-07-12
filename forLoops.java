@@ -1,4 +1,3 @@
-package Basics;
 import java.util.Scanner;
 public class forLoops {
     public static void main(String[] args) {

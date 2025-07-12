@@ -1,6 +1,6 @@
 import java.util.Scanner;
 public class binarySearch {
-    public static void sigma(int [] numbers, int listLength){
+    public static void print(int [] numbers, int listLength){
         int index = 0;
         System.out.println("Here is your list: ");
         for (int i = 0; i < listLength; i++){
@@ -41,7 +41,7 @@ public class binarySearch {
         for (int i = 0; i < listLength; i++){
             numbers[i] = answer.nextInt();
         }
-        sigma(numbers, listLength);
+        print(numbers, listLength);
         System.out.println("What number in your list would you like to find the index of?");
         int choice = answer.nextInt();
         index = check(numbers, choice, a, b, listLength);

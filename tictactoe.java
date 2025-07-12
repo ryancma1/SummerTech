@@ -1,4 +1,3 @@
-package Games;
 import java.util.Scanner;
 public class tictactoe {
     public static void main(String[] args) {
@@ -6,7 +5,7 @@ public class tictactoe {
         String [][] board = new String[3][3];
         for (int i = 0; i < 3; i++){
             for (int j = 0; j < 3; j++){
-                board [i][j] = "-";
+                board [i][j] = " - ";
             }
         }
         for (int i = 0; i < 3; i++){
@@ -15,14 +14,14 @@ public class tictactoe {
                 }
                 System.out.println("");
             }
-        String turn = "X";
+        String turn = " X ";
         int playerturn = 1;
         int turncount = 0;
         while (turncount < 9){
-            if (turn.equals ("X")){
+            if (turn.equals (" X ")){
                 playerturn = 1;
             }
-            else if (turn.equals ("O")){
+            else if (turn.equals (" O ")){
                 playerturn = 2;
             }
             System.out.println("Player " + playerturn + ". Where would you like to play an " + turn + "?");
@@ -33,7 +32,7 @@ public class tictactoe {
                 System.out.println("Please input an accurate response.");
                 continue;
             }
-            if (board [xcord][ycord].equals ("X")||board [xcord][ycord].equals ("O")){
+            if (board [xcord][ycord].equals (" X ")||board [xcord][ycord].equals (" O ")){
                 System.out.println("Please enter a spot that isn't occupied.");
                 continue;
             }
@@ -77,11 +76,11 @@ public class tictactoe {
                 System.out.println("PLAYER " + playerturn + " WON.");
                 break;
             }
-            if (turn.equals ("X")){
-                turn = "O";
+            if (turn.equals (" X ")){
+                turn = " O ";
             }
-            else if (turn.equals ("O")){
-                turn = "X";
+            else if (turn.equals (" O ")){
+                turn = " X ";
             }
 
         }
