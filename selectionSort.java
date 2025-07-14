@@ -8,8 +8,8 @@ public class selectionSort {
     }
     public static void main(String[] args) {
         Random number = new Random();
-        int length = 10;
-        int listRange = 10;
+        int length = 100;
+        int listRange = 100;
         int lowestNumber = listRange;
         int currentNumber = 0;
         int checker = 0;
@@ -35,18 +35,18 @@ public class selectionSort {
                 currentNumber = list[i];
                 if (currentNumber < lowestNumber){
                     lowestNumber = currentNumber;
-                    for (int j = i; j < length ; j++){    
-                        if (lowestNumber == list[j]){
-                            index = j;
-                        }
-                    }
-                    holder = lowestNumber;
-                    list[index] = holder;
-                    list[i] = lowestNumber;
                 }
-                System.out.println("Changing List: ");
-                print(list, length);
             }
+            for (int j = checker; j < length; j++){    
+                    if (lowestNumber == list[j]){
+                        index = j;
+                    }
+            }
+            holder = list[checker];
+            list[checker] = list[index];
+            list[index] = holder;
+            System.out.println("Changing List: ");
+            print(list, length);
             checker += 1;
             counter += 1;
         }
