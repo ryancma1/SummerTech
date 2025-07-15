@@ -7,16 +7,16 @@ public class mergesort {
         }
         System.out.println("");
     }
-    public static int[] sort(int [] list, int start, int end){
-        int [] list1 = split(list, start, (end/2)-1);
-        int [] list2 = split(list, end/2, end);
+    public static int[] sort(int [] list){
+        int [] list1 = split(list, 0, (list.length/2)-1);
+        int [] list2 = split(list, list.length/2, list.length - 1);
         if (list1.length > 1){
-            sort(list, start, end);
+            list1 = sort(list1);
         }
         if (list2.length > 1){
-            sort(list, start, end);
+            list2 = sort(list2);
         }
-        return list;
+        return merge(list1, list2);
     }
     public static int[] split(int [] list, int start, int end){
         int [] list3 = new int[end-start];
@@ -30,29 +30,58 @@ public class mergesort {
         int list1track = 0;
         int list2track = 0;
         for (int i = 0; i < list4.length; i++){
-            if (list2track < 4 && list1[list1track] > list2[list2track]){
-                    list4 [i] = list2[list2track];
-                    list2track += 1;
-                    System.out.println("list2");
+            System.out.println("i " + i);
+            System.out.println("1: " + list1track);
+            System.out.println("2: " + list2track);
+            if (list1track < list1.length && list2track < list2.length && list1[list1track] >= list2[list2track]){
+                list4 [i] = list2[list2track];
+                list2track += 1;
+                for (int j = 0; j < list4.length; j++){
+                    System.out.print(list4[j] + ", ");
                 }
-            else if (listlist1[list1track] < list2[list2track]){
+                System.out.println("");
+                System.out.println("list2");  
+            }
+            else if (list1track < list1.length && list2track < list2.length && list1[list1track] <= list2[list2track]){
                 list4 [i] = list1[list1track];
                 list1track += 1;
+                for (int j = 0; j < list4.length; j++){
+                    System.out.print(list4[j] + ", ");
+                }
+                System.out.println("");
                 System.out.println("list1");
+            }
+            else if (list2track >= list2.length && list1track < list1.length){
+                list4 [i] = list1[list1track];
+                list1track += 1;
+                for (int j = 0; j < list4.length; j++){
+                    System.out.print(list4[j] + ", ");
+                }
+                System.out.println("");
+                System.out.println("list1");
+            }
+            else if (list1track >= list1.length && list2track < list2.length){
+                list4 [i] = list2[list2track];
+                list2track += 1;
+                for (int j = 0; j < list4.length; j++){
+                    System.out.print(list4[j] + ", ");
+                }
+                System.out.println("");
+                System.out.println("list2");
             }
             System.out.println("forloop");
         }    
         return list4;
     }
     public static void main(String[] args) {
-        int range = 8;
+        int range = 20;
         int counter = 0;
         int holder = 0;
-        int [] list = new int[8];
-        int [] list1 = new int[]{8,7,2,5};
-        int [] list2 = new int[]{4,3,6,1};
+        int [] list = new int[10];
+        int [] list1 = new int[list.length/2];
+        int [] list2 = new int[list.length/2];
         Random number = new Random();
-        /*for (int i = 0; i < list.length; i++){
+        for (int i = 0; i < list.length; i++){
             int numberGen = number.nextInt(range);
             list[i] = numberGen;
         }
@@ -63,9 +92,7 @@ public class mergesort {
         for (int i = 0; i < list2.length; i++){
             int numberGen = number.nextInt(range);
             list2[i] = numberGen;
-        }*/
-        Arrays.sort(list1);
-        Arrays.sort(list2);
+        }
         list = merge(list1, list2);
         for (int i = 0; i < list.length; i++){
             System.out.print(list[i] + ", ");
