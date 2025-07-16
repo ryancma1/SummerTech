@@ -7,15 +7,16 @@ public class bubbleSort {
         System.out.println("");
     }
     public static void main (String [] args){
+        long initialtime = System.currentTimeMillis();
         Random number = new Random();
         int holder = 0;
-        int length = 1000;
+        int length = 100;
         int checker = 0;
         int changeAmount = 0;
         int counter = 0;
         int [] list = new int[length];
         for (int i = 0; i < length; i++){
-            int numberGen = number.nextInt(1000);
+            int numberGen = number.nextInt(100);
             list[i] = numberGen;
         }
         System.out.println("Start List: ");
@@ -35,8 +36,11 @@ public class bubbleSort {
             checker = 0;
             counter += 1;
         }
+        long endtime = System.currentTimeMillis();
+        long time = endtime - initialtime;
         System.out.println("End List: ");
         print(list, length);
+        System.out.println("Time: " + time);
         System.out.println("The list changed " + changeAmount + " times.");
     }
 }

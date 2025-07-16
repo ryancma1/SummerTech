@@ -7,15 +7,15 @@ public class selectionSort {
         System.out.println("");
     }
     public static void main(String[] args) {
+        long initialtime = System.currentTimeMillis();
         Random number = new Random();
-        int length = 100;
-        int listRange = 100;
+        int length = 10000;
+        int listRange = 10000;
         int lowestNumber = listRange;
         int currentNumber = 0;
         int checker = 0;
         int holder = 0;
         int index = 0;
-        int counter = 0;
         int [] list = new int[length];
         for (int i = 0; i < length; i++){
             int numberGen = number.nextInt(listRange);
@@ -45,16 +45,12 @@ public class selectionSort {
             holder = list[checker];
             list[checker] = list[index];
             list[index] = holder;
-            System.out.println("Changing List: ");
-            print(list, length);
             checker += 1;
-            counter += 1;
         }
+        long endtime = System.currentTimeMillis();
+        long time = endtime - initialtime;
         System.out.println("End List: ");
         print(list, length);
-        System.out.println("The list changed " + counter + " times.");
-
-
-
+        System.out.println("Time: " + time);
     }
 }
