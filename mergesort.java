@@ -51,20 +51,20 @@ public class mergesort {
     }
     public static void main(String[] args) {
         long initialtime = System.currentTimeMillis();
-        int range = 1000000;
-        int [] list = new int[1000000];
+        int range = 100000000;
+        int [] list = new int[100000000];
         Random number = new Random();
         for (int i = 0; i < list.length; i++){
             int numberGen = number.nextInt(range);
             list[i] = numberGen;
         }
-        System.out.println("Unsorted List: ");
-        print(list);
+        /*System.out.println("Unsorted List: ");
+        print(list);*/
         list = sort(list);
         long endtime = System.currentTimeMillis();
         long time = endtime - initialtime;
-        System.out.println("Sorted List: ");
-        print(list);
+        /*System.out.println("Sorted List: ");
+        print(list);*/
         System.out.println("Time: " + time);
         
     }
