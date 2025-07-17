@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Random;
 public class bogoSort {
     public static void print(int [] list){
         for (int i = 0; i < list.length; i++){
