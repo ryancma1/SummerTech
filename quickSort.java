@@ -72,13 +72,13 @@ public class quickSort {
             int numberGen = number.nextInt(list.length);
             list[i] = numberGen;
         }
-        /*System.out.println("Unsorted List: ");
-        print(list);*/
+        //System.out.println("Unsorted List: ");
+        //print(list);
         list = sort(list);
         long endtime = System.currentTimeMillis();
         long time = endtime - initialtime;
-        /*System.out.println("Sorted List: ");
-        print(list);*/
+        //System.out.println("Sorted List: ");
+        //print(list);
         System.out.println("Time: " + time);
 
 
