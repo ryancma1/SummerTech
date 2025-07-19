@@ -95,6 +95,8 @@ public class Sudoku{
         }
         System.out.println("Here is your Sudoku board:");
         print(board);
+        long startTime = System.currentTimeMillis();
+        input(board, boardAnswer, 5, "YES", startTime);
     }
 
     public static void rules(){
@@ -105,10 +107,13 @@ public class Sudoku{
         System.out.println("4. Within each level, you will have 5 lives. If you make a mistake, you lose a life.");
     }
 
-    public static void continuing(String [][] board, String [][] boardAnswer, int lives, String continueGame){
+    public static void continuing(String [][] board, String [][] boardAnswer, int lives, String continueGame, long startTime){
         Scanner answer = new Scanner(System.in);
+        long endTime = System.currentTimeMillis();
+        long time = (endTime - startTime) / 1000;
         System.out.println("Here is the full answer board: ");
         print(boardAnswer);
+        System.out.println("Time: " + time);
         System.out.println("Would you like to play another Sudoku? (yes/no)");
         continueGame = answer.next();
         continueGame = continueGame.toUpperCase();
@@ -126,26 +131,26 @@ public class Sudoku{
         }
     }
 
-    public static void input(String [][] board, String [][] boardAnswer, int lives, String continueGame){
+    public static void input(String [][] board, String [][] boardAnswer, int lives, String continueGame, long startTime){
         Scanner answer = new Scanner(System.in);
-        System.out.println("Enter the row (0 - 8), column (0 - 8), and value (1 - 9).");
+        System.out.println("Enter the row (1 - 9), column (1 - 9), and value (1 - 9).");
         System.out.print("Row: ");
         int row = answer.nextInt();
         System.out.print("Column: ");
         int column = answer.nextInt();
         System.out.print("Value: ");
         int value = answer.nextInt();
-        while (row < 0 || row > 8 || column < 0 || column > 8 || value < 1 || value > 9) {
-            if (!(board[row][column].equals (" _ "))) {
-                System.out.println("Invalid input. Please enter valid row (0 - 8), column (0 - 8), and value (1 - 9):");
-                System.out.print("Row: ");
-                row = answer.nextInt();
-                System.out.print("Column: ");
-                column = answer.nextInt();
-                System.out.print("Value: ");
-                value = answer.nextInt();
-            }
+        while (row < 1 || row > 9 || column < 1 || column > 9 || value < 1 || value > 9 || (!(board[row - 1][column - 1].equals (" _ ")))) {
+            System.out.println("Invalid input. Please enter valid row (1 - 9), column (1 - 9), and value (1 - 9):");
+            System.out.print("Row: ");
+            row = answer.nextInt();
+            System.out.print("Column: ");
+            column = answer.nextInt();
+            System.out.print("Value: ");
+            value = answer.nextInt();
         }
+        row--;
+        column--;
         board[row][column] = " " + value + " ";
         if (!(board[row][column].equals (boardAnswer[row][column]))) {
             System.out.println("Incorrect! You have lost a life.");
@@ -154,15 +159,15 @@ public class Sudoku{
             System.out.println("Lives: " + lives);
             if (lives == 0) {
                 System.out.println("Game Over! You have no lives left.");
-                continuing(board, boardAnswer, lives, continueGame);
+                continuing(board, boardAnswer, lives, continueGame, startTime);
             } else {
                 System.out.println("Try again.");
             }
-            input(board, boardAnswer, lives, continueGame);
+            input(board, boardAnswer, lives, continueGame, startTime);
         }
         if (check(board, boardAnswer) == 81) {
             System.out.println("Congratulations! You have completed the Sudoku.");
-            continuing(board, boardAnswer, lives, continueGame);
+            continuing(board, boardAnswer, lives, continueGame, startTime);
         }
         System.out.println("Current board:");
     }
@@ -181,7 +186,6 @@ public class Sudoku{
 
     public static void print(String [][] board){
         String horizontalBorder = "+---------+---------+---------+";
-        System.out.println("  0  1  2 | 3  4  5 | 6  7  8  ");
         System.out.println(horizontalBorder);
         for (int i = 0; i < 9; i++){
             System.out.print("|");
@@ -209,8 +213,8 @@ public class Sudoku{
         System.out.println("");
         selection(board, boardAnswer);
         while (continueGame.equals("YES")) {
-            input(board, boardAnswer, lives, continueGame);
             print(board);
+            input(board, boardAnswer, lives, continueGame, System.currentTimeMillis());
         }
     }
 
