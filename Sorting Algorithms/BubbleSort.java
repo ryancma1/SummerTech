@@ -1,5 +1,5 @@
 import java.util.Random;
-public class bubbleSort {
+public class BubbleSort {
     public static void print(int [] list, int length){
         for (int i = 0; i < length; i++){
             System.out.print(list[i] + ", ");

@@ -1,5 +1,6 @@
+package Games;
 import java.util.Random;
-public class highestandlowest {
+public class HighestandLowest {
     public static void print (int [] list, int length){
         for (int i = 0; i < length; i++){
             System.out.print(list[i] + ", ");

@@ -1,6 +1,7 @@
+package Basics;
 import java.util.Scanner;
 import java.util.Random;
-public class searching {
+public class Searching {
     public static void main(String[] args) {
         int[] list = new int[5];
         int index = 0;

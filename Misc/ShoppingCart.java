@@ -1,5 +1,6 @@
+package Misc;
 import java.util.Scanner;
-public class shoppingCarts {
+public class ShoppingCart {
     public static void main(String[] args) {
         Scanner Answer = new Scanner(System.in);
         System.out.println("Welcome to the supermarket!");

@@ -1,5 +1,6 @@
+package Math;
 import java.util.Scanner;
-public class celsiustofahrenheit {
+public class CelsiustoFahrenheit {
     public static double solve(double choice){
         choice = choice * ((double) 9/(double) 5) + 32;
         return choice;

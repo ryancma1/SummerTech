@@ -1,5 +1,6 @@
+package Misc;
 import java.util.Scanner;
-public class checklist {
+public class Checklist {
     public static boolean check(int [] list){
         boolean sorted = true;
         for (int i = 0; i < list.length - 1; i++){

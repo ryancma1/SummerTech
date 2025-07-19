@@ -1,4 +1,4 @@
-public class sortingAlgorithm {
+public class SimpleSort {
     public static void print(int [] list){
         for (int i = 0; i < 2; i++){
             System.out.print(list[i] + ", ");

@@ -1,5 +1,6 @@
+package Basics;
 import java.util.Scanner;
-public class binarySearch {
+public class BinarySearch {
     public static void print(int [] numbers, int listLength){
         int index = 0;
         System.out.println("Here is your list: ");

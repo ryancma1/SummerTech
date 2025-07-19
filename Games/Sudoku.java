@@ -1,3 +1,4 @@
+package Games;
 import java.util.Scanner;
 public class Sudoku{
     public static void printEmpty(String [][] board){

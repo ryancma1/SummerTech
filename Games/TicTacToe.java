@@ -1,5 +1,6 @@
+package Games;
 import java.util.Scanner;
-public class tictactoe {
+public class TicTacToe {
     public static void main(String[] args) {
         Scanner answer = new Scanner(System.in);
         String [][] board = new String[3][3];

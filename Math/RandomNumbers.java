@@ -1,6 +1,7 @@
+package Math;
 import java.util.Scanner;
 import java.util.Random;
-public class randomNumbers {
+public class RandomNumbers {
     public static void main(String[] args) {
         Scanner Answer = new Scanner(System.in);
         Random  Number = new Random();

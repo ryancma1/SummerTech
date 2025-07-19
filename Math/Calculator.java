@@ -1,5 +1,6 @@
+package Math;
 import java.util.Scanner;
-public class calculator {
+public class Calculator {
     public static void main (String args[]){
         Scanner Answer = new Scanner(System.in);
         System.out.println("Welcome to the Calculator!");

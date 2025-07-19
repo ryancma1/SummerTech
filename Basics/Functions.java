@@ -1,5 +1,6 @@
+package Basics;
 import java.util.Random;
-public class functions {
+public class Functions {
     public static void print(int [] list){
         for (int i = 0; i < 10; i++){
                 System.out.print(list[i] + ", ");

@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class merge {
+public class Merge {
     public static void print(int [] list1, int [] list2){
         System.out.println("List 1:");
         for (int i = 0; i < list1.length; i++){

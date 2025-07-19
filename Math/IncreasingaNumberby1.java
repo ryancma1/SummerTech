@@ -1,5 +1,6 @@
+package Math;
 import java.util.Scanner;
-public class increasinganumberby1 {
+public class IncreasingaNumberby1 {
     public static int add(int number){
         number += 1;
         return number;

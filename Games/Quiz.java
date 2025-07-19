@@ -1,5 +1,6 @@
+package Games;
 import java.util.Scanner;
-public class quiz {
+public class Quiz {
     public static void main (String args[]){
         Scanner Ryan = new Scanner(System.in);
         System.out.println("How do you craft a diamond pickaxe?");

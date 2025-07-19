@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class sortedbinarySearch {
+public class SortedBinarySearch {
     public static void print(int [] list, int listLength){
         for (int i = 0; i < listLength; i++){
             System.out.print(list[i] + ", ");

@@ -1,6 +1,7 @@
+package Math;
 import java.util.Random;
 import java.util.Scanner;
-public class statistics {
+public class Statistics {
     public static void print (int [] numbers, int length){
         for (int i = 0; i < length; i++){
             System.out.print(numbers[i] + ", ");

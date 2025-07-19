@@ -1,5 +1,6 @@
+package Games;
 import java.util.Scanner;
-public class connect4 {
+public class Connect4 {
     public static void main(String[] args) {
         Scanner answer = new Scanner(System.in);
         String [][] board = new String[6][7];

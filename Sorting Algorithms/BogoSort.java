@@ -1,5 +1,5 @@
 import java.util.Random;
-public class bogoSort {
+public class BogoSort {
     public static void print(int [] list){
         for (int i = 0; i < list.length; i++){
             System.out.print(list[i] + ", ");
