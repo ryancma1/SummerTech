@@ -15,7 +15,12 @@ public class Blackjack {
         Scanner answer = new Scanner(System.in);
         Deck deck = new Deck();
         Deck playerHand = new Deck(new ArrayList<Card>()); 
+        Deck splitHand1 = new Deck(new ArrayList<Card>());
+        Deck splitHand2 = new Deck(new ArrayList<Card>());
+        Deck splitHand3 = new Deck(new ArrayList<Card>());
         Deck dealerHand = new Deck(new ArrayList<Card>()); 
+        int counter = 0;
+        int counter1 = 0;
         deck.shuffle();
         playerHand.addCard(deck.getCard(0));
         deck.subtractCard();
@@ -31,34 +36,102 @@ public class Blackjack {
         System.out.println("Your cards are: " + playerHand.getCard(0) + " " + playerHand.getCard(1));
         System.out.println("Total: " + totalplayerHand);
         System.out.println("The dealer has a " + dealerHand.getCard(0)); 
-        if (playerHand.getCard(0) == playerHand.getCard(1)) {
-            System.out.println("Would you like to hit, stay, double down, or split?");
-            System.out.print("Choice: ");
-        } 
+        
+    }
+
+    public static void dealerGame(Deck deck, Deck dealerHand, int counter) {
+        int totaldealerHand = 0;
+        for (int i = 0; i < dealerHand.size(); i++) {
+            totaldealerHand += faceCard(dealerHand.getCard(i));
+        }
+        if (totaldealerHand == 21 && counter == 0) {
+            System.out.println("The dealer has Blackjack. Their cards were " + dealerHand.getCard(0) + " " + dealerHand.getCard(1));
+            //Player loses money
+        }
+        else if (totaldealerHand == 21 && counter > 0) {
+            System.out.println("The dealer has 21. Their cards were ");
+            for (int i = 0; i < counter; i++) {
+                System.out.print(dealerHand.getCard(i) + " ");
+                //Player loses money
+            }
+        }
+        else if (totaldealerHand < 17) {
+            System.out.println("The dealer has ");
+            for (int i = 0; i < counter; i++) {
+                System.out.print(dealerHand.getCard(i) + " ");
+            }
+            dealerHand.addCard(deck.getCard(0));
+            deck.subtractCard();
+            dealerGame(deck, dealerHand, counter);
+        }
+        else if (totaldealerHand > 21) {
+            System.out.println("The dealer has busted. Their cards were ");
+            for (int i = 0; i < counter; i++) {
+                System.out.print(dealerHand.getCard(i) + " ");
+            }
+            System.out.println("There total was " + totaldealerHand + ".");
+        }
         else {
-            System.out.println("Would you like to hit, stay, or double down?");
-            System.out.print("Choice: ");
-        }            
-        String choice = answer.next();
-        while (!(choice.equalsIgnoreCase ("hit") || (choice.equalsIgnoreCase ("stay")) || (choice.equalsIgnoreCase ("double down")) || (choice.equalsIgnoreCase ("split")))) {
-            System.err.println("That is not an answer.");
-            System.out.print("Choice: ");
-            choice = answer.next();
+            //dealer stays and compare their hand against players'
         }
-        if (choice.equalsIgnoreCase ("hit")) {
-            playerHand.addCard(deck.getCard(0));
-            deck.subtractCard    
-            //give anotehr card
+    }
+
+    public static void playerGame(Deck playerHand, Deck deck, Deck splitHand1, int counter1) {
+        Scanner answer = new Scanner(System.in);
+        int totalplayerHand = 0;
+        for (int i = 0; i < playerHand.size(); i++) {
+            totalplayerHand += faceCard(playerHand.getCard(i));
         }
-        else if (choice.equalsIgnoreCase ("stay")) {
-            //dealer gets card or stays if they have a 17 or above
+        if (totalplayerHand == 21 && counter1 == 0) {
+            System.out.println("You have BlackJack. Your cards were ");
+            for (int i = 0; i < counter1; i++) {
+                System.out.print(playerHand.getCard(i) + " ");
+            }
+            //Player gains money
         }
-        else if (choice.equalsIgnoreCase ("double down")) {
-            //give one more card and double the bet
+        else if (totalplayerHand == 21 && counter1 > 0) {
+            //player stays then dealer goes
+            dealerGame(playerHand, playerHand, counter1);
         }
-        else if (playerHand.getCard(0) != playerHand.getCard(1) && choice.equalsIgnoreCase ("split")) {
-            //make two hands each with one of those cards
-        }
+        else {
+            if (playerHand.getCard(0) == playerHand.getCard(1)) {
+                System.out.println("Would you like to hit, stay, double down, or split?");
+                System.out.print("Choice: ");
+            } 
+            else {
+                System.out.println("Would you like to hit, stay, or double down?");
+                System.out.print("Choice: ");
+            }            
+            String choice = answer.next();
+            while (!(choice.equalsIgnoreCase ("hit") || (choice.equalsIgnoreCase ("stay")) || (choice.equalsIgnoreCase ("double down")) || (choice.equalsIgnoreCase ("split"))) || (choice.equalsIgnoreCase ("split") && playerHand.getCard(0) != playerHand.getCard(1))) {
+                System.err.println("That is not an answer.");
+                System.out.print("Choice: ");
+                choice = answer.next();
+            }
+            if (choice.equalsIgnoreCase ("hit")) {
+                playerHand.addCard(deck.getCard(0));
+                deck.subtractCard();    
+                //give anotehr card
+            }
+            else if (choice.equalsIgnoreCase ("stay")) {
+                //dealer gets card or stays if they have a 17 or above
+            }
+            else if (choice.equalsIgnoreCase ("double down")) {
+                playerHand.addCard(deck.getCard(0));
+                deck.subtractCard();    
+                //give one more card and double the bet
+            }
+            if (playerHand.getCard(0) == playerHand.getCard(1) && choice.equalsIgnoreCase ("split")) {
+                splitHand1.addCard(playerHand.getCard(0));
+                playerHand.subtractCard();
+                playerHand.addCard(deck.getCard(0));
+                deck.subtractCard();
+                splitHand1.addCard(playerHand.getCard(0));
+                deck.subtractCard();
+                //make two hands each with one of those cards
+                //could split multiple times
+            }
+        } 
     }
 
     public static int faceCard(Card a) {
@@ -73,36 +146,6 @@ public class Blackjack {
         }
     }
 
-    public static void check(Deck playerHand, Deck dealerHand) {
-        int totalplayerHand = 0;
-        int totaldealerHand = 0;
-        for (int i = 0; i < playerHand.size(); i++) {
-            totalplayerHand += faceCard(playerHand.getCard(i));
-        }
-        for (int i = 0; i < dealerHand.size(); i++) {
-            totaldealerHand += faceCard(dealerHand.getCard(i));
-        }
-        if (totalplayerHand == 21 && totaldealerHand == 21) {
-            //give money back
-        }
-        else if (totalplayerHand > 21 && totaldealerHand < 21) {
-            //player loses whatever they bet
-        }
-        else if (totalplayerHand < 21 && totaldealerHand > 21) {
-            //player wins whatever they bet
-        }
-        else if (totalplayerHand < 21 && totaldealerHand < 21 && totalplayerHand > totaldealerHand) {
-            //give player money bc they win
-        }
-        else if (totalplayerHand < 21 && totaldealerHand < 21 && totalplayerHand < totaldealerHand) {
-            //player loses money
-        }
-        else if (totalplayerHand < 21 && totaldealerHand < 21 && totalplayerHand == totaldealerHand) {
-            //give money back
-        }
-        else {
-            //player loses money
-        }
-    }
+    
 
 }
