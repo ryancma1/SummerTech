@@ -14,6 +14,10 @@ public class Deck {
         }
     }  
 
+    public Deck(ArrayList<Card> deck) {
+        this.deck = deck;
+    }
+
     public Card getCard(int i) {
         return deck.get(i);
     }
@@ -32,5 +36,17 @@ public class Deck {
                 counter++;
             }
         }
+    }
+
+    public void addCard(Card a) {
+        deck.add(a);
+    }
+
+    public void subtractCard() {
+        deck.remove(0);
+    }
+
+    public int size() {
+        return deck.size();
     }
 }
