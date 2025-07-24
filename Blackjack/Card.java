@@ -1,4 +1,4 @@
-package Cards;
+package Blackjack;
 
 public class Card {
     private int value;

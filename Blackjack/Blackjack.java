@@ -1,4 +1,4 @@
-package Cards;
+package Blackjack;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -90,16 +90,19 @@ public class Blackjack {
         }
         else if (totaldealerHand == 21 && counter > 0 && totalplayerHand > 21) {
             System.out.println("");
-            System.out.println("Dealer has a total of 21 and you have a total of " + totalplayerHand + " and busted.");
+            System.out.println("Dealer won.");
+            System.out.println("");
+            System.out.println("Dealer has a total of 21 and you had a total of " + totalplayerHand + " and busted.");
             System.out.println("Dealer: ");
             for (int i = 0; i < dealerHand.size(); i++) {
                 System.out.print(dealerHand.getCard(i) + " ");
             }
         }
         else if (totaldealerHand == 21 && counter > 0 && totalplayerHand < 21) {
+            System.out.println("");
             System.out.println("Dealer won.");
             System.out.println("");
-            System.out.println("Dealer has a total of 21 and you have a total of " + totalplayerHand + ".");
+            System.out.println("Dealer has a total of 21 and you had a total of " + totalplayerHand + ".");
             System.out.println("Dealer: ");
             for (int i = 0; i < dealerHand.size(); i++) {
                 System.out.print(dealerHand.getCard(i) + " ");
@@ -117,6 +120,7 @@ public class Blackjack {
             for (int i = 0; i < dealerHand.size(); i++) {
                 System.out.print(dealerHand.getCard(i) + " ");
             }
+            System.out.println("");
             System.out.println("You won!");
             System.out.println("The dealer had a total of " + totaldealerHand + " and you had a total of 21.");
             System.out.println("Dealer: ");
@@ -126,6 +130,7 @@ public class Blackjack {
             for (int i = 0; i < dealerHand.size(); i++) {
                 System.out.print(dealerHand.getCard(i) + " ");
             }
+            System.out.println("");
             System.out.println("You won!");
             System.out.println("The dealer busted with a total of " + totaldealerHand + " and you had a total of 21.");
         }
@@ -141,6 +146,7 @@ public class Blackjack {
                 System.out.println("Dealer had a total of " + totaldealerHand + " and you had a total of " + totalplayerHand + ".");
             } 
             else if (totaldealerHand < totalplayerHand) {
+                System.out.println("");
                 System.out.println("You won!");
                 System.out.println("You had a total of " + totalplayerHand + " and the dealer had a total of " + totaldealerHand + ".");
             } 
